@@ -1,12 +1,12 @@
 spring:
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
-
-    show-sql: true
+        show-sql: true
+        format-sql: true
 
 
   datasource:
@@ -14,6 +14,19 @@ spring:
     username: andelarwanda
     password: andela123
 
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 2KB
+      max-file-size: 200MB
+      max-request-size: 215MB
+
 server:
   error:
     include-message: always
+
+
+cloudinary:
+  cloud_name: dmepvxtwv
+  api_key: 315539454121522
+  api_secret: loWqc4xiNEmb1YUa812FvHzrjd0

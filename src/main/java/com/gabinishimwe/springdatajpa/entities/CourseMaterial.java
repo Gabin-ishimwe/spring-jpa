@@ -15,7 +15,9 @@ import javax.persistence.*;
 @Entity
 @Table(name = "course_material")
 public class CourseMaterial {
-    @Id
+    @Id(
+
+    )
     @SequenceGenerator(
             name = "courseMaterial_sequence",
             sequenceName = "course_sequence",

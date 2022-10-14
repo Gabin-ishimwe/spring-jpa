@@ -11,18 +11,18 @@ class StudentRepositoryTest {
     @Autowired
     private StudentRepository studentRepository;
 
-    @Test
-    public void saveStudent() {
-        Student student = Student.builder()
-                .emailId("gabin@gmail.com")
-                .fName("gabin")
-                .lName("ishimwe")
-                .guardianEmail("tm@gmail.com")
-                .guardianName("maman")
-                .guardianMobile("-07834234232")
-                .build();
-
-        studentRepository.save(student);
-    }
+//    @Test
+//    public void saveStudent() {
+//        Student student = Student.builder()
+//                .emailId("gabin@gmail.com")
+////                .fName("gabin")
+//                .lName("ishimwe")
+//                .guardianEmail("tm@gmail.com")
+//                .guardianName("maman")
+//                .guardianMobile("-07834234232")
+//                .build();
+//
+//        studentRepository.save(student);
+//    }
 
 }

@@ -37,11 +37,11 @@ public class Course {
     )
     private Integer credits;
 
-    @OneToOne(
-            mappedBy = "course"
-    )
-    @JsonIgnore
-    private CourseMaterial courseMaterial;
+//    @OneToOne(
+//
+//    )
+//
+//    private CourseMaterial courseMaterial;
 
     @ManyToOne(
             cascade = CascadeType.ALL,
@@ -66,5 +66,5 @@ public class Course {
 //                    referencedColumnName = "studentId"
 //            )
 //    )
-    private List<Student> students;
+//    private List<Student> students;
 }

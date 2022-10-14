@@ -1,7 +1,12 @@
 package com.gabinishimwe.springdatajpa.services;
 
+import com.gabinishimwe.springdatajpa.controllers.CourseController;
+import com.gabinishimwe.springdatajpa.converter.CourseConverter;
 import com.gabinishimwe.springdatajpa.entities.Course;
+import com.gabinishimwe.springdatajpa.entities.CourseDto;
+import com.gabinishimwe.springdatajpa.entities.Teacher;
 import com.gabinishimwe.springdatajpa.repositories.CourseRepository;
+import com.gabinishimwe.springdatajpa.repositories.TeacherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -15,11 +20,19 @@ public class CourseService {
     private final CourseRepository courseRepository;
 
     @Autowired
+    private TeacherRepository teacherRepository;
+
+    @Autowired
+    private CourseConverter courseConverter;
+
+    @Autowired
     CourseService(CourseRepository courseRepository) {
         this.courseRepository = courseRepository;
     }
 
-    public void createCourse(Course course) {
+    public void createCourse(CourseDto courseDto) {
+        Teacher findTeacher = teacherRepository.findById(courseDto.getTeacherId()).orElseThrow(() -> new IllegalStateException("Teacher doesn't exist"));
+        Course course = courseConverter.dtoToEntity(courseDto, findTeacher);
         courseRepository.save(course);
     }
 
