@@ -8,6 +8,7 @@ import com.gabinishimwe.springdatajpa.services.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServlet;
@@ -39,6 +40,11 @@ public class UserController {
                 applicationUrl(request)
         ));
         return "user registered";
+    }
+
+    @PostMapping(path = "/login")
+    public UserDetails userLogin(@RequestBody UserLogin userLogin) {
+        return userService.loadUserByUsername(userLogin.getUserName());
     }
 
     @PostMapping(path = "/role")
